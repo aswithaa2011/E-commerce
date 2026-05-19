@@ -37,7 +37,7 @@ const LoginPage = () => {
 
   const handleVerifyOtp = async () => {
     setError("");
-    if (!otp || otp.length !== 6) return setError("Enter the 6-digit OTP");
+    if (!otp || otp.length !== 5) return setError("Enter the 5-digit OTP");
     setLoading(true);
     try {
       const { data } = await api.post("/auth/verify-otp", { email, otp });
@@ -110,8 +110,8 @@ const LoginPage = () => {
               value={otp}
               onChange={(e) => { setOtp(e.target.value); setError(""); }}
               className="border w-full p-2 rounded mb-4 outline-none focus:ring-2 focus:ring-[#8E1C9D] tracking-widest text-center text-lg font-bold"
-              placeholder="_ _ _ _ _ _"
-              maxLength={6}
+              placeholder="_ _ _ _ _"
+              maxLength={5}
             />
             {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
             <button

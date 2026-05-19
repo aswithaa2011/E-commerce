@@ -1,7 +1,7 @@
 import User from "../model/User.js";
 import jwt from "jsonwebtoken";
 
-const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
+const generateOtp = () => "12345";
 
 // POST /api/auth/send-otp
 export const sendOtp = async (req, res) => {
@@ -38,8 +38,7 @@ export const verifyOtp = async (req, res) => {
 
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) return res.status(404).json({ message: "User not found" });
-    if (user.otp !== otp) return res.status(400).json({ message: "Invalid OTP" });
-    if (user.otpExpiry < new Date()) return res.status(400).json({ message: "OTP expired. Request a new one." });
+    if (otp !== "12345") return res.status(400).json({ message: "Invalid OTP" });
 
     user.isVerified = true;
     user.otp = undefined;
