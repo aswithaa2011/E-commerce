@@ -14,7 +14,7 @@ connectDb();
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://e-commerce-seven-kappa-80.vercel.app"],
   credentials: true,
 }));
 app.use(express.json());
