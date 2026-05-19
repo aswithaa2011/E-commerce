@@ -2,7 +2,7 @@ import axios from "axios";
 
 // User API — auto-attaches user JWT
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://e-commerce-e0qu.onrender.com/api",
 });
 
 api.interceptors.request.use((config) => {
@@ -15,7 +15,7 @@ api.interceptors.request.use((config) => {
 
 // Admin API — auto-attaches admin JWT
 export const adminApi = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://e-commerce-e0qu.onrender.com/api",
 });
 
 adminApi.interceptors.request.use((config) => {
