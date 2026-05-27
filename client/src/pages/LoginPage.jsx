@@ -3,6 +3,8 @@ import logo from "../assets/images/logo.svg";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import AuthContext from "../components/Authentication/AuthContext";
+import GoogleSignIn from "../components/Authentication/GoogleSignIn.jsx";
+
 
 const LoginPage = () => {
   const [email, setEmail]     = useState("");
@@ -76,20 +78,12 @@ const LoginPage = () => {
             >
               {loading ? "Sending OTP..." : "Continue"}
             </button>
-            <div className="text-sm text-gray-600">
-              <p>Buying for work?</p>
-              <a href="#" className="text-[#8E1C9D] font-medium">Create a free business account</a>
-            </div>
+            <GoogleSignIn />
           </>
         )}
 
         {step === 2 && (
           <>
-            <p className="text-sm text-gray-500 mb-2">
-              OTP sent to <strong>{email}</strong>
-            </p>
-
-            {/* DEV MODE banner — shows OTP returned from API */}
             {devOtp && (
               <div className="flex items-center justify-between bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 mb-3 text-left">
                 <div>

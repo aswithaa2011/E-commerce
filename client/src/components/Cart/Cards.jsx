@@ -27,7 +27,7 @@ const Cards = ({ products: propProducts }) => {
     alert("Item added to cart");
   };
 
-  const getProductId = (product) => product._id || encodeURIComponent(product.name);
+  const getProductId = (product) => product.id || product._id || encodeURIComponent(product.name);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -51,7 +51,7 @@ const Cards = ({ products: propProducts }) => {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((e) => (
             <div
-              key={e._id || e.name}
+              key={e.id || e._id || e.name}
               className="group overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="relative overflow-hidden">
