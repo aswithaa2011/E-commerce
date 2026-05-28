@@ -96,3 +96,20 @@ export const verifyOtp = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+export const emailLogin = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ message: "Email is required" });
+
+    let user = await User.findOne({ email: email.toLowerCase() });
+    if (!user) {
+      user = await User.create({ email: email.toLowerCase() });
+    }
+
+    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    return res.status(200).json({ token, user: { id: user._id, email: user.email, name: user.name } });
+  } catch (err) {
+    console.error("Email login error:", err);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
