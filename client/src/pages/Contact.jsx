@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiMail, FiMapPin, FiPhoneCall } from "react-icons/fi";
 import Footer from "../components/Layouts/Footer";
 import api from "../api/axiosInstance";
+import AuthContext from "../components/Authentication/AuthContext";
 
 const Contact = () => {
+  const { datas } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", phone: "", orderId: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError]     = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,6 +20,10 @@ const Contact = () => {
   };
 
   const handleSubmit = async () => {
+    // 🔒 Auth check — show modal if not authenticated
+    if (!datas || datas.status !== true) {
+      return setShowModal(true);
+    }
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       return setError("Name, email, and message are required.");
     }
@@ -147,6 +156,53 @@ const Contact = () => {
       </section>
 
       <Footer />
+
+      {/* 🔒 Auth Modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="relative bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold"
+            >
+              ✕
+            </button>
+
+            {/* Lock Icon */}
+            <div className="flex justify-center mb-4">
+              <span className="text-5xl">🔒</span>
+            </div>
+
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Login Required</h2>
+            <p className="text-sm text-gray-500 mb-6">
+              You need to be logged in to send a message. Please login or create an account.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => navigate("/login")}
+                className="w-full h-11 rounded-xl bg-gradient-to-r from-purple-700 to-violet-600 text-white font-semibold text-sm hover:from-purple-800 hover:to-violet-700 transition"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => navigate("/login")}
+                className="w-full h-11 rounded-xl border-2 border-purple-600 text-purple-700 font-semibold text-sm hover:bg-purple-50 transition"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
