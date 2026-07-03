@@ -53,8 +53,8 @@ const NavBar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-purple-100 bg-white/90 backdrop-blur-md shadow-sm">
       <div className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-fit items-center gap-3">
-          <img src={logo1} alt="logo" className="h-10 w-auto object-contain" />
+        <Link to="/" className="flex min-w-fit items-center gap-1">
+          <img src={logo1} alt="logo" className="h-12 w-auto object-contain" />
           <img src={logo2} alt="logo animation" className="h-8 w-auto object-contain" />
         </Link>
 

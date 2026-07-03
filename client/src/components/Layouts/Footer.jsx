@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-5">
           <div>
             <h2 className="text-3xl font-extrabold lowercase tracking-tight text-purple-300">
-              purplle
+              glowra
             </h2>
             <ul className="mt-6 space-y-3 text-sm text-zinc-200">
               <li className="cursor-pointer hover:text-purple-300">Who are we?</li>
@@ -52,7 +52,7 @@ const Footer = () => {
               <li className="cursor-pointer hover:text-purple-300">Store Locator</li>
               <li className="cursor-pointer hover:text-purple-300">Cancellation & Return</li>
               <li className="cursor-pointer hover:text-purple-300">Shipping & Delivery</li>
-              <li className="cursor-pointer hover:text-purple-300">Sell on Purplle</li>
+              <li className="cursor-pointer hover:text-purple-300">Sell on Glowra</li>
             </ul>
           </div>
 
@@ -72,8 +72,8 @@ const Footer = () => {
             <ul className="mt-6 space-y-3 text-sm text-zinc-200">
               <li className="cursor-pointer hover:text-purple-300">Offer Zone</li>
               <li className="cursor-pointer hover:text-purple-300">New Launches</li>
-              <li className="cursor-pointer hover:text-purple-300">Purplle Fashion</li>
-              <li className="cursor-pointer hover:text-purple-300">Purplle Pro</li>
+              <li className="cursor-pointer hover:text-purple-300">Glowra Fashion</li>
+              <li className="cursor-pointer hover:text-purple-300">Glowra Pro</li>
               <li className="cursor-pointer hover:text-purple-300">Sitemap</li>
             </ul>
           </div>
@@ -159,7 +159,7 @@ const Footer = () => {
           </div>
 
           <p className="text-sm">
-            © 2026 PURPLLE E-RETAIL LIMITED All Rights Reserved.
+            © 2026 GLOWRA E-RETAIL LIMITED All Rights Reserved.
           </p>
         </div>
       </div>
